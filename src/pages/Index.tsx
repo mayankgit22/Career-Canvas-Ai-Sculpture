@@ -12,12 +12,12 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { Navigation } from "@/components/Navigation";
 const Index = () => {
   const [activeTab, setActiveTab] = useState("discovery");
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background md:overflow-x-hidden">
       <Navigation />
 
       {/* Hero Section */}
       {/* <img className="w-full h-full" src="https://imgs.search.brave.com/lcC_TfnW3N9UTFyW4O_g1-7Q5xxfFcMEoHVtJqi9Ix8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGljanVt/Ym8uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9taW5pbWFsaXN0/LWhlYWRlci1waG90/by13aXRoLXdvbWFu/LXdpdGgtY2xvc2Vk/LWV5ZXMtZnJlZS1p/bWFnZS5qcGVnP3c9/NjAwJnF1YWxpdHk9/ODA" alt="" /> */}
-      <section className="py-20 px-4 text-white relative overflow-hidden ">
+      <section className="py-20 px-4 text-white relative overflow-x-hidden w-[100%]">
         <div className="absolute inset-0 bg-slate-50 border-b-2 border-black px-0"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto bg-transparent ">
