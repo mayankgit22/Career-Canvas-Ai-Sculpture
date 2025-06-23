@@ -91,8 +91,8 @@ const BadgesSharing = () => {
       <div className="container mx-auto px-4 py-8 bg-white w-[100%] ">
         <div className="max-w-6xl mx-auto flex flex-col justify-center ">
           <div className=" text-center mb-8 bg-blue-100 rounded-md p-4">
-            <h1 className="text-3xl font-bold mb-4 text-zinc-950">Badges & Sharing</h1>
-            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-2xl font-semibold">
+            <h1 className=" text-3xl md:text-4xl font-bold mb-4 text-zinc-950">Badges & Sharing</h1>
+            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent md:font-semibold text-lime-500 font-medium text-xl sm:text-2xl md:text-3xl">
               Celebrate your achievements and share your career journey
             </p>
           </div>

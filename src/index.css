@@ -54,6 +54,7 @@
 
 @media (max-width: 768px) {
   .radar-container {
+    width: 80vw;
     height: 300px; /* reduced for mobile */
   }
 }

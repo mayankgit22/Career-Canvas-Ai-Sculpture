@@ -65,8 +65,8 @@ const Index = () => {
       <section className="py-20 px-4 bg-neutral-50 border-b-2 border-black ">
         <div className="container mx-auto">
           <div className="text-center mb-16 rounded">
-            <h2 className="font-bold mb-4 text-4xl text-black">See Your Skills in Action</h2>
-            <p className="text-lime-500 font-medium text-3xl">
+            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">See Your Skills in Action</h2>
+            <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               Our AI analyzes your profile and matches it with perfect opportunities
             </p>
           </div>
@@ -141,8 +141,8 @@ const Index = () => {
       <section id="features" className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-bold mb-4 text-4xl text-zinc-950">Everything You Need to Succeed</h2>
-            <p className="text-3xl font-medium text-lime-500">
+            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">Everything You Need to Succeed</h2>
+            <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               From opportunity discovery to application submission—all in one platform
             </p>
           </div>
@@ -185,8 +185,8 @@ const Index = () => {
       <section id="agents" className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-bold mb-4 text-4xl text-black">Meet Your AI Career Team</h2>
-            <p className="text-lime-500 text-3xl">
+            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">Meet Your AI Career Team</h2>
+            <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               9 specialized agents working together to accelerate your career success
             </p>
           </div>
@@ -198,8 +198,8 @@ const Index = () => {
       <section id="success" className="py-20 px-4 bg-black">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Student Success Stories</h2>
-            <p className="font-normal text-lime-500 text-2xl">
+            <h2 className="tmd:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">Student Success Stories</h2>
+            <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               See how CareerCanvas has transformed careers across the globe
             </p>
           </div>

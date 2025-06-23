@@ -38,8 +38,8 @@ const ContentCreator = () => {
       <div className="container mx-auto px-4 py-8 bg-gray-50 text-black">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 bg-blue-100 rounded-md p-4">
-            <h1 className="font-bold mb-4 text-zinc-950 text-4xl">Content Creator</h1>
-            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-semibold text-2xl">
+            <h1 className="font-bold mb-4 text-zinc-950 text-3xl md:text-4xl">Content Creator</h1>
+            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-lime-500 font-medium text-xl sm:text-2xl md:text-3xl">
               Generate tailored resumes, cover letters, and portfolios for your target opportunities
             </p>
           </div>
