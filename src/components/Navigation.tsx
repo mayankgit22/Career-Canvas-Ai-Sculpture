@@ -166,7 +166,7 @@ alert("log out successful")
         <Button
           variant="ghost"
           size="sm"
-          className="md:hidden"
+          className="md:hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -175,8 +175,8 @@ alert("log out successful")
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden mt-4 pb-4 border-t border-border">
-          <nav className="flex flex-col space-y-2 mt-4">
+        <div className="md:hidden mt-4 pb-4 border-b-2 border-black/10">
+          <nav className="flex flex-col space-y-2 mt-4 px-4">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
@@ -186,8 +186,8 @@ alert("log out successful")
                   to={item.path}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${
                     isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "bg-white/80 text-green-700"
+                      : "text-black hover:text-foreground "
                   }`}
                   onClick={() => setIsOpen(false)}
                 >

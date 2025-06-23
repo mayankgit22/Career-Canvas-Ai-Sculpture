@@ -4,7 +4,8 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/career-canvas-ai-sculptor-97/',
+base: '/career-canvas-ai-sculptor-97/',
+
 
   resolve: {
     alias: {

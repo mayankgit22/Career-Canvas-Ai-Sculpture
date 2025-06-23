@@ -88,8 +88,8 @@ const BadgesSharing = () => {
   return <div className="min-h-screen bg-white">
       <Navigation />
       
-      <div className="container mx-auto px-4 py-8 bg-white">
-        <div className="max-w-6xl mx-auto ">
+      <div className="container mx-auto px-4 py-8 bg-white w-[100%] ">
+        <div className="max-w-6xl mx-auto flex flex-col justify-center ">
           <div className=" text-center mb-8 bg-blue-100 rounded-md p-4">
             <h1 className="text-3xl font-bold mb-4 text-zinc-950">Badges & Sharing</h1>
             <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-2xl font-semibold">
@@ -97,10 +97,10 @@ const BadgesSharing = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-4">
             {/* Badges Section */}
-            <div className="lg:col-span-2 space-y-6">
-              <Card className="border-2 border-black bg-gradient-to-r from-blue-500 to-purple-600">
+            <div className="lg:col-span-2 flex flex-col justify-center space-y-6 md:w-[100%]   text-sm md:text-lg">
+              <Card className="border-2 border-black bg-gradient-to-r from-blue-500 to-purple-600   md:w-[100%]">
                 <CardHeader className="">
                   <CardTitle className="flex items-center gap-2">
                     <Trophy className="w-5 h-5 text-black" />
@@ -108,7 +108,7 @@ const BadgesSharing = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                     {earnedBadges.map((badge, index) => {
                     const Icon = badge.icon;
                     return <Card key={index} className="bg-slate-950">
@@ -140,8 +140,8 @@ const BadgesSharing = () => {
               </Card>
 
               {/* Shareable Content */}
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
-                <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-md">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black   md:w-[100%]">
+                <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-md ">
                   <CardTitle className="flex items-center gap-2">
                     <Share2 className="w-5 h-5 text-black" />
                     <h1 className="text-black font-semibold">Share Your Success</h1>
@@ -150,25 +150,26 @@ const BadgesSharing = () => {
                 <CardContent>
                   <div className="space-y-4">
                     {shareableContent.map((content, index) => <Card key={index} className="hover:shadow-lg transition-shadow bg-lime-300">
-                        <CardContent className="p-3 bg-lime-200 border-2 border-black rounded-xl">
-                          <div className="flex gap-4">
-                            <div className="w-20 h-16 rounded-lg flex items-center justify-center bg-amber-950">
+                        <CardContent className="p-3 bg-lime-200 border-2 border-black rounded-xl ">
+                          <div className="flex gap-3 w-[100%] ">
+                            <div className=" rounded-sm flex items-center justify-center bg-amber-950 w-10 h-10 md:w-20 md:h=16">
                               <FileText className="w-6 h-6 text-muted-foreground" />
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1   md:w-[100%]">
                               <div className="flex items-center gap-2 mb-1">
                                 <h4 className="font-medium">{content.title}</h4>
                                 <Badge variant="secondary" className="text-xs">{content.type}</Badge>
                               </div>
                               <p className="text-sm mb-3 text-zinc-900">{content.description}</p>
-                              <div className="flex gap-2">
-                                {content.platforms.map(platform => <Button key={platform} size="sm" variant="outline" className="bg-zinc-50 text-zinc-950">
+                              <div className="flex gap-4">
+                                {content.platforms.map(platform => <Button key={platform} size="sm" variant="outline" className="bg-zinc-50 text-zinc-950 border-2 border-black font-light w-5 h-5">
                                     <Share2 className="w-3 h-3 mr-1" />
-                                    {platform}
+                                    <span className="hidden md:block">{platform}</span>
                                   </Button>)}
-                                <Button size="sm" variant="outline" className="bg-zinc-50 text-zinc-950">
+                                <Button size="sm" variant="outline" className="bg-zinc-50 text-zinc-950 border-2 border-black w-5 h-5">
                                   <Copy className="w-3 h-3 mr-1" />
-                                  Copy Link
+                                  <span className="hidden md:blocl">Copy Link</span>
+                                  {/* Copy Link */}
                                 </Button>
                               </div>
                             </div>
@@ -181,8 +182,8 @@ const BadgesSharing = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6">
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
+            <div className="space-y-6  md:w-[100%]">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black w-[100%]  md:w-[100%] ">
                 <CardHeader>
                   <CardTitle className="text-black">Badge Progress</CardTitle>
                 </CardHeader>
@@ -200,7 +201,7 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black  md:w-[100%] ">
                 <CardHeader>
                   <CardTitle className="text-black">Community Impact</CardTitle>
                 </CardHeader>
@@ -220,7 +221,7 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black   md:w-[100%]">
                 <CardHeader>
                   <CardTitle className="text-black">Success Stories</CardTitle>
                 </CardHeader>
@@ -242,7 +243,7 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black   md:w-[100%] ">
                 <CardHeader>
                   <CardTitle className="text-black">Viral Challenge</CardTitle>
                 </CardHeader>

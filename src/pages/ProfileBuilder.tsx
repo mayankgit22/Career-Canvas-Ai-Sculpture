@@ -43,10 +43,10 @@ const ProfileBuilder = () => {
     completed: false,
     icon: Target
   }];
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background ">
       <Navigation />
       
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 p-2">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-3xl  text-black font-bold mb-4">Build Your Profile</h1>

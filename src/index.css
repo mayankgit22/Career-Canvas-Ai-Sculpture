@@ -46,6 +46,17 @@
     --sidebar-border: 226 232 240;
     --sidebar-ring: 37 99 235;
   }
+.radar-container {
+  width: 100%;
+  max-width: 500px;
+  height: 500px; /* default for desktop */
+}
+
+@media (max-width: 768px) {
+  .radar-container {
+    height: 300px; /* reduced for mobile */
+  }
+}
 
   .dark {
     --background: 15 23 42;

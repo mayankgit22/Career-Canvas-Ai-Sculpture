@@ -46,16 +46,16 @@ const ContentCreator = () => {
 
           <Tabs defaultValue="resume" className="space-y-8 ">
             <TabsList className="grid w-full grid-cols-3 bg-gray-400">
-              <TabsTrigger value="resume" className="text-white   bg-gradient-to-r from-blue-500 to-purple-600  mr-2 ml-2">Resume/CV Builder</TabsTrigger>
-              <TabsTrigger value="portfolio" className="text-white bg-gradient-to-r from-blue-500 to-purple-600 mr-2 ml-2">Portfolio Creator</TabsTrigger>
-              <TabsTrigger value="cover-letter" className="text-white bg-gradient-to-r from-blue-500 to-purple-600 mr-2 ml-2">Cover Letter</TabsTrigger>
+              <TabsTrigger value="resume" className="text-white   bg-gradient-to-r from-blue-500 to-purple-600  mr-2 ml-2 text-[10px] md:text-md">Resume/CV Builder</TabsTrigger>
+              <TabsTrigger value="portfolio" className="text-white bg-gradient-to-r from-blue-500 to-purple-600 mr-2 ml-2 text-[10px] md:text-md">Portfolio Creator</TabsTrigger>
+              <TabsTrigger value="cover-letter" className="text-white bg-gradient-to-r from-blue-500 to-purple-600 mr-2 ml-2 text-[10px] md:text-md">Cover Letter</TabsTrigger>
             </TabsList>
 
             {/* Resume Builder */}
             <TabsContent value="resume" className="space-y-6">
               <div className="grid lg:grid-cols-3 gap-8">
                 {/* Configuration Panel */}
-                <div className="lg:col-span-1 space-y-6">
+                <div className="lg:col-span-1 space-y-4 w-[100%] md:w-[100%]">
                   <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
                     <CardHeader>
                       <CardTitle className="text-white"> Target Opportunity</CardTitle>
@@ -119,8 +119,8 @@ const ContentCreator = () => {
                 </div>
 
                 {/* Resume Preview */}
-                <div className="lg:col-span-2 ">
-                  <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
+                <div className="lg:col-span-2 w-[100%] md:w-[100%] ">
+                  <Card className="bg-gradient-to-r from-blue-500 to-purple-600 ">
                     <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600">
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-white">Resume Preview</CardTitle>
@@ -136,8 +136,8 @@ const ContentCreator = () => {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="bg-gradient-to-r from-blue-500 to-purple-600">
-                      <div className="bg-white border rounded-lg p-8 shadow-sm min-h-[600px]">
+                    <CardContent className="bg-gradient-to-r from-blue-500 to-purple-600 h-[20%]">
+                      <div className="bg-white border rounded-lg p-8 shadow-sm min-h-[100px] md:min-h-[600px]">
                         {/* Resume Content */}
                         <div className="space-y-6">
                           <div className="text-center border-b pb-4">
@@ -185,8 +185,8 @@ const ContentCreator = () => {
                         </div>
                       </div>
                       
-                      <div className="flex justify-center gap-4 mt-6">
-                        <Button className="gradient-bg">
+                      <div className=" grid md:flex justify-center gap-2 md:gap-4 mt-6 w-[100%] ">
+                        <Button className="gradient-bg text-sm font-medium">
                           <Download className="w-4 h-4 mr-2" />
                           Download PDF
                         </Button>
@@ -309,7 +309,7 @@ const ContentCreator = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex justify-center gap-4 mt-6">
+                  <div className="grid md:flex justify-center gap-2 md:gap-4 mt-6 w-[100%]">
                     <Button className="gradient-bg">
                       <Download className="w-4 h-4 mr-2" />
                       Download
