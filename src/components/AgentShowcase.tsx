@@ -41,7 +41,7 @@ const agents = [{
   name: "Polisher Agent",
   category: "Content Creation",
   icon: Shield,
-  description: "Refines content for grammar, tone, and ATS optimization.",
+  description: "Refines content for grammar, tone, and ATS optimization.And Make Lif Better",
   color: "bg-teal-500"
 }, {
   name: "Visualizer Agent",
@@ -59,8 +59,9 @@ const agents = [{
 export const AgentShowcase = () => {
   return <div className="grid md:grid-cols-3 gap-6">
       {agents.map((agent, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-          <CardHeader className="bg-lime-500">
-            <div className="flex items-center gap-3 bg-lime-500">
+      <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+
+            <div className="flex items-center gap-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
               <div className={`w-10 h-10 ${agent.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
                 <agent.icon className="w-5 h-5 text-white" />
               </div>
@@ -72,8 +73,8 @@ export const AgentShowcase = () => {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="bg-lime-500">
-            <p className="text-muted-foreground text-sm leading-relaxed">
+          <CardContent className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <p className="text-white text-sm leading-relaxed">
               {agent.description}
             </p>
           </CardContent>

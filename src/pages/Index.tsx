@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Brain, Target, Zap, Users, FileText, BarChart3, Sparkles, ChevronRight, Star, CheckCircle, TrendingUp, Award, Share2, Rocket } from "lucide-react";
-import { RadarChart } from "@/components/RadarChart";
+import { RadarChart1 } from "@/components/RadarChart";
 import { AgentShowcase } from "@/components/AgentShowcase";
 import { FeatureCard } from "@/components/FeatureCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
@@ -16,16 +16,17 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="py-20 px-4 gradient-bg text-white relative overflow-hidden">
-        <div className="absolute inset-0 absolute bg-slate-50 border-b-2 border-black px-0"></div>
+      {/* <img className="w-full h-full" src="https://imgs.search.brave.com/lcC_TfnW3N9UTFyW4O_g1-7Q5xxfFcMEoHVtJqi9Ix8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGljanVt/Ym8uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9taW5pbWFsaXN0/LWhlYWRlci1waG90/by13aXRoLXdvbWFu/LXdpdGgtY2xvc2Vk/LWV5ZXMtZnJlZS1p/bWFnZS5qcGVnP3c9/NjAwJnF1YWxpdHk9/ODA" alt="" /> */}
+      <section className="py-20 px-4 text-white relative overflow-hidden ">
+        <div className="absolute inset-0 bg-slate-50 border-b-2 border-black px-0"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto bg-transparent ">
-            <Badge className="mb-6 text-white border-white/30 bg-slate-950">
+            <Badge className="mb-6 text-white border-white/30 bg-black hover:text-white hover:bg-gray-600">
               🚀 AI-Powered Career Success Platform
             </Badge>
             <h1 className="text-5xl font-bold mb-6 leading-tight text-zinc-950 md:text-7xl">
               Your AI Career <br />
-              <span className="text-brand-purple">Sculptor</span>
+              <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Sculptor</span>
             </h1>
             <p className="text-xl mb-8 leading-relaxed text-indigo-500 md:text-2xl font-normal">
               Discover opportunities that match your skills and generate ATS-optimized resumes, 
@@ -33,27 +34,27 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/profile">
-                <Button size="lg" className="text-blue-600 px-8 py-4 font-semibold text-lg bg-zinc-400 hover:bg-zinc-300">
+                <Button size="lg" className="text-blue-600 px-8 py-4 font-semibold text-lg bg-zinc-300 hover:bg-zinc-400">
                   Start Building Your Career
                   <ChevronRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-white text-white px-8 py-4 bg-lime-500 hover:bg-lime-400 text-lg">
+              <Button size="lg" variant="outline" className="border-white text-white px-8 py-4 bg-mainColor hover:bg-blue-800 hover:text-white text-lg">
                 Watch Demo
               </Button>
             </div>
             <div className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto">
-              <div className="text-center">
-                <div className="text-2xl font-bold bg-gray-950">95%</div>
-                <div className="text-sm text-blue-200 bg-gray-950">Success Rate</div>
+              <div className="text-center rounded-full border-2 p-2 bg-black border-mainColor">
+                <div className="text-2xl font-bold">95%</div>
+                <div className="text-sm text-blue-200">Success Rate</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold bg-gray-950">50K+</div>
-                <div className="text-sm text-blue-200 bg-gray-950">Students Helped</div>
+              <div className="text-center rounded-full border-2 p-2 bg-black border-mainColor">
+                <div className="text-2xl font-bold ">50K+</div>
+                <div className="text-sm text-blue-200 ">Students Helped</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold bg-gray-950">9</div>
-                <div className="text-sm text-blue-200 bg-gray-950">AI Agents</div>
+              <div className="text-center rounded-full border-2 p-2 bg-black border-mainColor">
+                <div className="text-2xl font-bold">9</div>
+                <div className="text-sm text-blue-200">AI Agents</div>
               </div>
             </div>
           </div>
@@ -63,34 +64,34 @@ const Index = () => {
       {/* Skills Visualization Demo */}
       <section className="py-20 px-4 bg-neutral-50 border-b-2 border-black ">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-bold mb-4 text-4xl text-zinc-950">See Your Skills in Action</h2>
+          <div className="text-center mb-16 rounded">
+            <h2 className="font-bold mb-4 text-4xl text-black">See Your Skills in Action</h2>
             <p className="text-lime-400 font-medium text-3xl">
               Our AI analyzes your profile and matches it with perfect opportunities
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Card className="p-6 bg-lime-500">
+              <Card className="p-6 bg-mainColor">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <BarChart3 className="w-5 h-5 text-brand-blue" />
+                  <CardTitle className="flex items-center text-black gap-2">
+                    <BarChart3 className="w-5 h-5 text-balck " />
                     Skill-Opportunity Match
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <RadarChart />
+                  <RadarChart1 />
                   <div className="mt-6 space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-zinc-50 font-semibold text-sm">Python</span>
+                      <span className="text-zinc-50 font-semibold text-sm">ReactJS</span>
                       <Badge className="bg-green-100 text-green-800">Strong Match</Badge>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-zinc-50 font-semibold text-sm">SQL</span>
+                      <span className="text-zinc-50 font-semibold text-sm">Nextjs</span>
                       <Badge className="bg-yellow-100 text-yellow-800">Good Match</Badge>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-zinc-50 text-sm">Machine Learning</span>
+                      <span className="font-semibold text-zinc-50 text-sm">DSA</span>
                       <Badge className="bg-green-100 text-green-800">Strong Match</Badge>
                     </div>
                   </div>
@@ -163,7 +164,7 @@ const Index = () => {
             id: "sharing",
             label: "Social Sharing",
             icon: Share2
-          }].map(tab => <Button key={tab.id} variant={activeTab === tab.id ? "default" : "outline"} onClick={() => setActiveTab(tab.id)} className={activeTab === tab.id ? "gradient-bg" : ""}>
+          }].map(tab => <Button key={tab.id} variant={activeTab === tab.id ? "default" : "outline"} onClick={() => setActiveTab(tab.id)} className={activeTab === tab.id ? "gradient-bg" : "border-2 border-black"}>
                 <tab.icon className="w-4 h-4 mr-2" />
                 {tab.label}
               </Button>)}
@@ -171,8 +172,8 @@ const Index = () => {
 
           <div className="grid lg:grid-cols-3 gap-8">
             <FeatureCard icon={Brain} title="AI-Powered Matching" description="Our machine learning algorithms analyze thousands of opportunities to find your perfect matches." active={activeTab === "discovery"} />
-            <FeatureCard icon={FileText} title="Instant Resume Generation" description="Create ATS-optimized resumes tailored to specific companies and roles in seconds." active={activeTab === "content"} />
-            <FeatureCard icon={Zap} title="ATS Optimization" description="Ensure your applications pass automated screening with smart keyword integration." active={activeTab === "optimization"} />
+            <FeatureCard icon={FileText} title="Instant Resume Generation" description="Create ATS-optimized resumes tailored to specific companies and roles in seconds. Try it out!!" active={activeTab === "content"} />
+            <FeatureCard icon={Zap} title="ATS Optimization" description="Ensure your applications pass automated screening with smart keyword integration  and More." active={activeTab === "optimization"} />
             <FeatureCard icon={Users} title="Portfolio Microsites" description="Showcase your projects with beautiful, shareable portfolio websites." active={activeTab === "sharing"} />
             <FeatureCard icon={Award} title="Gamified Progress" description="Earn badges and track your career journey with our engaging progression system." active={activeTab === "discovery"} />
             <FeatureCard icon={BarChart3} title="Skill Visualization" description="Interactive charts that make your skills and achievements visually compelling." active={activeTab === "content"} />
@@ -184,7 +185,7 @@ const Index = () => {
       <section id="agents" className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-bold mb-4 text-4xl">Meet Your AI Career Team</h2>
+            <h2 className="font-bold mb-4 text-4xl text-black">Meet Your AI Career Team</h2>
             <p className="text-lime-500 text-2xl">
               9 specialized agents working together to accelerate your career success
             </p>
@@ -194,7 +195,7 @@ const Index = () => {
       </section>
 
       {/* Success Stories */}
-      <section id="success" className="py-20 px-4 bg-slate-950">
+      <section id="success" className="py-20 px-4 bg-black">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Student Success Stories</h2>
@@ -235,10 +236,10 @@ const Index = () => {
                 Empowering students with AI-driven career success tools.
               </p>
               <div className="flex space-x-4">
-                <Button size="sm" variant="outline" className="border-slate-600 text-zinc-950">
+                <Button size="sm" variant="outline" className="border-slate-600 text-white">
                   Twitter
                 </Button>
-                <Button size="sm" variant="outline" className="border-slate-600 text-zinc-950">
+                <Button size="sm" variant="outline" className="border-slate-600 text-white">
                   LinkedIn
                 </Button>
               </div>

@@ -89,10 +89,10 @@ const BadgesSharing = () => {
       <Navigation />
       
       <div className="container mx-auto px-4 py-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
+        <div className="max-w-6xl mx-auto ">
+          <div className=" text-center mb-8 bg-blue-100 rounded-md p-4">
             <h1 className="text-3xl font-bold mb-4 text-zinc-950">Badges & Sharing</h1>
-            <p className="text-lime-500 text-2xl font-semibold">
+            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-2xl font-semibold">
               Celebrate your achievements and share your career journey
             </p>
           </div>
@@ -100,11 +100,11 @@ const BadgesSharing = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Badges Section */}
             <div className="lg:col-span-2 space-y-6">
-              <Card className="border-2 border-black bg-lime-500">
+              <Card className="border-2 border-black bg-gradient-to-r from-blue-500 to-purple-600">
                 <CardHeader className="">
                   <CardTitle className="flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-yellow-500" />
-                    Your Badges
+                    <Trophy className="w-5 h-5 text-black" />
+                    <h1 className=" text-black font-semibold">Your Badges</h1>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -140,11 +140,11 @@ const BadgesSharing = () => {
               </Card>
 
               {/* Shareable Content */}
-              <Card className="bg-lime-500 border-2 border-black ">
-                <CardHeader className="bg-lime-500">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
+                <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-md">
                   <CardTitle className="flex items-center gap-2">
-                    <Share2 className="w-5 h-5 text-blue-500" />
-                    Share Your Success
+                    <Share2 className="w-5 h-5 text-black" />
+                    <h1 className="text-black font-semibold">Share Your Success</h1>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -182,14 +182,14 @@ const BadgesSharing = () => {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <Card className="bg-lime-500 border-2 border-black ">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
                 <CardHeader>
-                  <CardTitle>Badge Progress</CardTitle>
+                  <CardTitle className="text-black">Badge Progress</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="text-center">
-                      <div className="text-2xl font-bold">3/6</div>
+                      <div className="text-2xl font-bold text-white">3/6</div>
                       <p className="text-sm text-zinc-950">Badges Earned</p>
                     </div>
                     <Progress value={50} className="h-3" />
@@ -200,16 +200,16 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-lime-500 border-2 border-black ">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
                 <CardHeader>
-                  <CardTitle>Community Impact</CardTitle>
+                  <CardTitle className="text-black">Community Impact</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     {communityStats.map((stat, index) => <div key={index} className="flex items-center justify-between">
                         <div>
                           <p className="text-sm text-zinc-950">{stat.label}</p>
-                          <p className="font-semibold">{stat.value}</p>
+                          <p className="font-semibold text-white">{stat.value}</p>
                         </div>
                         <div className="flex items-center gap-1 text-green-600">
                           <TrendingUp className="w-3 h-3" />
@@ -220,9 +220,9 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-lime-500 border-2 border-black ">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
                 <CardHeader>
-                  <CardTitle>Success Stories</CardTitle>
+                  <CardTitle className="text-black">Success Stories</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -242,14 +242,14 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-lime-500 border-2 border-black ">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black ">
                 <CardHeader>
-                  <CardTitle>Viral Challenge</CardTitle>
+                  <CardTitle className="text-black">Viral Challenge</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center space-y-3">
                     <div className="text-2xl">🚀</div>
-                    <h3 className="font-semibold">#CareerCanvasChallenge</h3>
+                    <h3 className="font-semibold text-white">#CareerCanvasChallenge</h3>
                     <p className="text-sm text-zinc-950">
                       Share your before/after resume transformation and tag 3 friends!
                     </p>

@@ -18,7 +18,7 @@ export const TestimonialCard = ({
   achievement
 }: TestimonialCardProps) => {
   return <Card className="h-full hover:shadow-lg transition-all duration-300 bg-transparent">
-      <CardContent className="p-6 bg-slate-800">
+      <CardContent className="p-6 bg-slate-600 rounded-md">
         <div className="flex mb-4">
           {[...Array(rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
         </div>
@@ -29,9 +29,9 @@ export const TestimonialCard = ({
         
         <div className="space-y-3">
           <div>
-            <div className="font-semibold">{name}</div>
+            <div className="font-semibold text-white">{name}</div>
             <div className="text-sm text-muted-foreground">{role}</div>
-            <div className="text-sm font-medium text-brand-blue">{company}</div>
+            <div className="text-sm font-medium text-brand-green">{company}</div>
           </div>
           
           <Badge className="bg-green-100 text-green-800 hover:bg-green-100">

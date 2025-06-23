@@ -12,7 +12,7 @@ export const FeatureCard = ({
   description,
   active = false
 }: FeatureCardProps) => {
-  return <Card className="border-2 border-black rounded">
+  return <Card className="border-2 border-black rounded hover:bg-gray-400 cursor-pointer hover:scale-105 transition-all duration-175">
       <CardHeader className="bg-gray-50">
         <div className="bg-gray-50">
           <Icon className="bg-gray-50" />

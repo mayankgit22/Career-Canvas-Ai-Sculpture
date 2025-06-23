@@ -37,18 +37,18 @@ const ContentCreator = () => {
       
       <div className="container mx-auto px-4 py-8 bg-gray-50 text-black">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
+          <div className="text-center mb-8 bg-blue-100 rounded-md p-4">
             <h1 className="font-bold mb-4 text-zinc-950 text-4xl">Content Creator</h1>
-            <p className="text-lime-500 font-semibold text-2xl">
+            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-semibold text-2xl">
               Generate tailored resumes, cover letters, and portfolios for your target opportunities
             </p>
           </div>
 
-          <Tabs defaultValue="resume" className="space-y-8">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="resume" className="text-zinc-950 bg-lime-500 hover:bg-lime-400 mr-2 ml-2">Resume/CV Builder</TabsTrigger>
-              <TabsTrigger value="portfolio" className="text-zinc-950 bg-lime-500 hover:bg-lime-400 mr-2 ml-2">Portfolio Creator</TabsTrigger>
-              <TabsTrigger value="cover-letter" className="text-zinc-950 bg-lime-500 hover:bg-lime-400">Cover Letter</TabsTrigger>
+          <Tabs defaultValue="resume" className="space-y-8 ">
+            <TabsList className="grid w-full grid-cols-3 bg-gray-400">
+              <TabsTrigger value="resume" className="text-white   bg-gradient-to-r from-blue-500 to-purple-600  mr-2 ml-2">Resume/CV Builder</TabsTrigger>
+              <TabsTrigger value="portfolio" className="text-white bg-gradient-to-r from-blue-500 to-purple-600 mr-2 ml-2">Portfolio Creator</TabsTrigger>
+              <TabsTrigger value="cover-letter" className="text-white bg-gradient-to-r from-blue-500 to-purple-600 mr-2 ml-2">Cover Letter</TabsTrigger>
             </TabsList>
 
             {/* Resume Builder */}
@@ -56,16 +56,16 @@ const ContentCreator = () => {
               <div className="grid lg:grid-cols-3 gap-8">
                 {/* Configuration Panel */}
                 <div className="lg:col-span-1 space-y-6">
-                  <Card className="bg-lime-500">
+                  <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
                     <CardHeader>
-                      <CardTitle>Target Opportunity</CardTitle>
+                      <CardTitle className="text-white"> Target Opportunity</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="space-y-3 bg-lime-500">
+                      <div className="space-y-3 bg-gradient-to-r from-blue-500 to-purple-600">
                         {opportunities.map(opp => <div key={opp.id} onClick={() => setSelectedOpportunity(opp.id)} className="">
                             <div className="flex items-center justify-between">
                               <div>
-                                <p className="font-medium text-sm">{opp.title}</p>
+                                <p className="font-medium text-sm text-black">{opp.title}</p>
                                 <p className="text-xs text-zinc-950">{opp.company}</p>
                               </div>
                               <Badge className="bg-green-100 text-green-800 text-xs">
@@ -77,23 +77,23 @@ const ContentCreator = () => {
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-lime-500">
+                  <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
                     <CardHeader>
-                      <CardTitle>Resume Template</CardTitle>
+                      <CardTitle className="text-white">Resume Template</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
                         {resumeTemplates.map(template => <div key={template.id} className="p-3 rounded-lg border hover:bg-muted cursor-pointer">
-                            <p className="font-medium text-sm">{template.name}</p>
+                            <p className="font-medium text-sm text-black">{template.name}</p>
                             <p className="text-xs text-zinc-950">{template.description}</p>
                           </div>)}
                       </div>
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-lime-500">
+                  <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
                     <CardHeader>
-                      <CardTitle>ATS Score</CardTitle>
+                      <CardTitle className="text-white">ATS Score</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="text-center">
@@ -119,11 +119,11 @@ const ContentCreator = () => {
                 </div>
 
                 {/* Resume Preview */}
-                <div className="lg:col-span-2">
-                  <Card className="bg-lime-500">
-                    <CardHeader className="bg-lime-500">
+                <div className="lg:col-span-2 ">
+                  <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
+                    <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600">
                       <div className="flex items-center justify-between">
-                        <CardTitle>Resume Preview</CardTitle>
+                        <CardTitle className="text-white">Resume Preview</CardTitle>
                         <div className="flex gap-2">
                           <Button variant="outline" size="sm" className="text-zinc-950 bg-indigo-600 hover:bg-indigo-500 border-2 border-black  ">
                             <Edit3 className="w-4 h-4 mr-2" />
@@ -136,7 +136,7 @@ const ContentCreator = () => {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="bg-lime-500">
+                    <CardContent className="bg-gradient-to-r from-blue-500 to-purple-600">
                       <div className="bg-white border rounded-lg p-8 shadow-sm min-h-[600px]">
                         {/* Resume Content */}
                         <div className="space-y-6">
@@ -208,7 +208,7 @@ const ContentCreator = () => {
             {/* Portfolio Creator */}
             <TabsContent value="portfolio" className="space-y-6">
               <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="bg-lime-500">
+                <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
                   <CardHeader className="bg-transparent">
                     <CardTitle className="text-zinc-950">Portfolio Microsite</CardTitle>
                   </CardHeader>
@@ -227,15 +227,15 @@ const ContentCreator = () => {
                     
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm">Projects Showcased</span>
+                        <span className="text-sm text-black">Projects Showcased</span>
                         <Badge className="bg-slate-400">3 Projects</Badge>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm">Skills Highlighted</span>
+                        <span className="text-sm text-black">Skills Highlighted</span>
                         <Badge className="bg-slate-400">8 Skills</Badge>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm">Design Theme</span>
+                        <span className="text-sm text-black">Design Theme</span>
                         <Badge className="bg-slate-400">Tech Professional</Badge>
                       </div>
                     </div>
@@ -247,7 +247,7 @@ const ContentCreator = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-lime-500">
+                <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
                   <CardHeader>
                     <CardTitle className="text-zinc-950">Portfolio Preview</CardTitle>
                   </CardHeader>
@@ -272,7 +272,7 @@ const ContentCreator = () => {
 
             {/* Cover Letter */}
             <TabsContent value="cover-letter" className="space-y-6">
-              <Card className="bg-lime-500">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-600">
                 <CardHeader>
                   <CardTitle>AI-Generated Cover Letter</CardTitle>
                 </CardHeader>

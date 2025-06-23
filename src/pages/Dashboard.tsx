@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 import { Search, Filter, MapPin, Calendar, ExternalLink, TrendingUp, Target, FileText, Share2, Award } from "lucide-react";
-import { RadarChart } from "@/components/RadarChart";
+import { RadarChart1 } from "@/components/RadarChart";
 
 const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -89,8 +89,8 @@ const Dashboard = () => {
           <div className="flex-1 space-y-8">
             {/* Header Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card>
-                <CardContent className="p-6 bg-indigo-500">
+              <Card className="rounded-lg">
+                <CardContent className="p-6 bg-indigo-500 rounded-xl">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-muted-foreground">Opportunities Matched</p>
@@ -101,7 +101,7 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
               <Card>
-                <CardContent className="p-6 bg-indigo-500">
+                <CardContent className="p-6 bg-indigo-500  rounded-xl">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-muted-foreground">Applications Sent</p>
@@ -112,7 +112,7 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
               <Card>
-                <CardContent className="p-6 bg-indigo-500">
+                <CardContent className="p-6 bg-indigo-500  rounded-xl">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-muted-foreground">Badges Earned</p>
@@ -131,19 +131,19 @@ const Dashboard = () => {
               </CardHeader>
               <CardContent className="px-[11px]">
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
-                  <RadarChart />
+                  <RadarChart1 />
                   <div className="space-y-4">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-zinc-50 font-semibold">Python</span>
+                        <span className="text-sm text-zinc-50 font-semibold">ReactJS</span>
                         <Badge className="bg-green-100 text-green-800">Strong Match</Badge>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-zinc-50 font-semibold">SQL</span>
+                        <span className="text-sm text-zinc-50 font-semibold">Nextjs</span>
                         <Badge className="bg-yellow-100 text-yellow-800">Good Match</Badge>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-zinc-50 font-semibold">Machine Learning</span>
+                        <span className="text-sm text-zinc-50 font-semibold">DSA</span>
                         <Badge className="bg-green-100 text-green-800">Strong Match</Badge>
                       </div>
                     </div>
@@ -163,9 +163,9 @@ const Dashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {tips.map((tip, index) => <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-lime-500">
-                      <div className="w-2 h-2 bg-brand-blue rounded-full mt-2"></div>
-                      <p className="text-sm">{tip}</p>
+                  {tips.map((tip, index) => <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-blue-500">
+                      <div className="w-2 h-2  bg-blue-900 rounded-full mt-2"></div>
+                      <p className="text-sm text-black">{tip}</p>
                     </div>)}
                 </div>
               </CardContent>
@@ -174,11 +174,11 @@ const Dashboard = () => {
             {/* Opportunities Feed */}
             <Card className="bg-indigo-500">
               <CardHeader>
-                <CardTitle className="text-zinc-950">Matched Opportunities</CardTitle>
+                <CardTitle className="text-zinc-950 mb-3">Matched Opportunities</CardTitle>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="relative flex-1">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                    <Input placeholder="Search opportunities..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-10 bg-slate-500" />
+                    <Input placeholder="Search opportunities..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-10  text-white font-medium border-2 border-black " />
                   </div>
                   <Button variant="outline" className="bg-zinc-50">
                     <Filter className="w-4 h-4 mr-2" />
@@ -188,12 +188,12 @@ const Dashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {opportunities.map((opp, index) => <Card key={index} className="hover:shadow-lg transition-shadow bg-lime-500">
+                  {opportunities.map((opp, index) => <Card key={index} className="hover:shadow-lg transition-shadow bg-blue-500">
                       <CardContent className="p-6">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                           <div className="space-y-2">
                             <div className="flex items-center gap-2">
-                              <h3 className="font-semibold">{opp.title}</h3>
+                              <h3 className="font-semibold text-black">{opp.title}</h3>
                               <Badge className={`${opp.match >= 90 ? "bg-green-100 text-green-800" : opp.match >= 80 ? "bg-blue-100 text-blue-800" : "bg-yellow-100 text-yellow-800"}`}>
                                 {opp.match}% Match
                               </Badge>
@@ -201,11 +201,11 @@ const Dashboard = () => {
                             <p className="text-zinc-950 text-sm">{opp.company}</p>
                             <p className="text-sm">{opp.description}</p>
                             <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                              <div className="flex items-center gap-1 bg-slate-900">
+                              <div className="flex items-center gap-1 ">
                                 <MapPin className="w-3 h-3" />
                                 {opp.location}
                               </div>
-                              <div className="flex items-center gap-1 bg-slate-900">
+                              <div className="flex items-center gap-1 ">
                                 <Calendar className="w-3 h-3" />
                                 {opp.deadline}
                               </div>
@@ -216,7 +216,7 @@ const Dashboard = () => {
                               <ExternalLink className="w-4 h-4 mr-2" />
                               Apply Now
                             </Button>
-                            <Button size="sm" variant="outline" className="bg-zinc-950 hover:bg-zinc-800 text-zinc-50 font-semibold">
+                            <Button size="sm" variant="outline" className="bg-zinc-950 border-2 border-black hover:bg-zinc-800 text-zinc-50 font-semibold">
                               Build Resume
                             </Button>
                           </div>

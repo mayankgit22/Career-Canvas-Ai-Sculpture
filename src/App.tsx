@@ -10,11 +10,17 @@ import ProfileBuilder from "./pages/ProfileBuilder";
 import ContentCreator from "./pages/ContentCreator";
 import BadgesSharing from "./pages/BadgesSharing";
 import NotFound from "./pages/NotFound";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import GetStartedPage from "./components/getStartedPage";
+// import {ClerkProvider}from '@clerk/clerk-react'
 
 const queryClient = new QueryClient();
-
+const publishableKey= import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    {/* <ClerkProvider publishableKey={publishableKey}> */}
+      
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -26,9 +32,13 @@ const App = () => (
           <Route path="/creator" element={<ContentCreator />} />
           <Route path="/badges" element={<BadgesSharing />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/getstarted" element={<GetStartedPage />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
+    {/* </ClerkProvider> */}
   </QueryClientProvider>
 );
 

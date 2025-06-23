@@ -49,8 +49,8 @@ const ProfileBuilder = () => {
       <div className="bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-4">Build Your Profile</h1>
-            <p className="text-lime-500 text-2xl font-semibold">
+            <h1 className="text-3xl  text-black font-bold mb-4">Build Your Profile</h1>
+            <p className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text text-2xl font-semibold">
               Tell us about yourself to get personalized opportunity matches
             </p>
           </div>
@@ -88,16 +88,16 @@ const ProfileBuilder = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-black bg-lime-500">
+              <Card className="border-2 border-black bg-gray-200">
                 <CardHeader>
                   <CardTitle>Quick Import</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button variant="outline" className="w-full text-zinc-950 bg-zinc-100">
+                  <Button variant="outline" className="w-full text-zinc-950 border-2 border-black bg-zinc-100">
                     <Upload className="w-4 h-4 mr-2" />
                     Upload Resume
                   </Button>
-                  <Button variant="outline" className="w-full text-zinc-950 bg-zinc-300 hover:bg-zinc-200">
+                  <Button variant="outline" className="w-full text-zinc-950 border-2 border-black bg-zinc-300 hover:bg-zinc-200">
                     <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
@@ -176,9 +176,9 @@ const ProfileBuilder = () => {
               </Card>
 
               {/* Skills */}
-              <Card className="bg-lime-500 border-black border-2">
+              <Card className="bg-gray-200 border-black border-2">
                 <CardHeader className="">
-                  <CardTitle className="flex items-center gap-2 text-zinc-950">
+                  <CardTitle className="flex items-center gap-2 text-black">
                     <Code className="w-5 h-5" />
                     Skills
                   </CardTitle>
@@ -193,21 +193,21 @@ const ProfileBuilder = () => {
                       </Badge>)}
                   </div>
                   <div className="flex gap-2">
-                    <Input placeholder="Add a skill..." value={newSkill} onChange={e => setNewSkill(e.target.value)} onKeyPress={e => e.key === 'Enter' && addSkill()} className="bg-gray-400" />
+                    <Input placeholder="Add a skill..." value={newSkill} onChange={e => setNewSkill(e.target.value)} onKeyPress={e => e.key === 'Enter' && addSkill()} className="bg-gray-400 text-black border-2 border-black" />
                     <Button onClick={addSkill}>
-                      <Plus className="w-4 h-4" />
+                      <Plus className="w-4 h-4 text-black" />
                     </Button>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-black ">
                     Add skills like programming languages, tools, soft skills, etc.
                   </p>
                 </CardContent>
               </Card>
 
               {/* Projects */}
-              <Card className="border-black border-2">
+              <Card className="border-black border-2 rounded-4xl bg-white">
                 <CardHeader className="bg-gray-50">
-                  <CardTitle className="flex items-center gap-2 text-zinc-950">
+                  <CardTitle className="flex items-center gap-2 text-black">
                     <Briefcase className="w-5 h-5" />
                     Projects
                   </CardTitle>
@@ -215,20 +215,20 @@ const ProfileBuilder = () => {
                 <CardContent className="space-y-4 bg-gray-50">
                   <div>
                     <Label htmlFor="projectTitle">Project Title</Label>
-                    <Input id="projectTitle" placeholder="E-commerce Web Application" className="border-black border-2 bg-gray-400" />
+                    <Input id="projectTitle" placeholder="E-commerce Web Application" className="border-black text-black border-2 bg-gray-400" />
                   </div>
                   <div>
                     <Label htmlFor="projectDescription">Description</Label>
-                    <Textarea id="projectDescription" placeholder="Describe your project, technologies used, and your role..." rows={3} className="border-black border-2 bg-gray-400" />
+                    <Textarea id="projectDescription" placeholder="Describe your project, technologies used, and your role..." rows={3} className="border-black text-black border-2 bg-gray-400" />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="projectLink">Project Link (Optional)</Label>
-                      <Input id="projectLink" placeholder="https://github.com/..." className="bg-gray-400" />
+                      <Input id="projectLink" placeholder="https://github.com/..." className="bg-gray-400 text-black border-2 border-black" />
                     </div>
                     <div>
                       <Label htmlFor="technologies">Technologies Used</Label>
-                      <Input id="technologies" placeholder="React, Node.js, MongoDB" className="bg-gray-400" />
+                      <Input id="technologies" placeholder="React, Node.js, MongoDB" className="bg-gray-400 text-black border-2 border-black" />
                     </div>
                   </div>
                   <Button variant="outline" className="w-full text-zinc-50 bg-blue-700 hover:bg-blue-600">
@@ -239,7 +239,7 @@ const ProfileBuilder = () => {
               </Card>
 
               {/* Career Goals */}
-              <Card className="bg-lime-500 border-2 border-black ">
+              <Card className="bg-gray-200 border-2 border-black ">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Target className="w-5 h-5" />
@@ -249,16 +249,16 @@ const ProfileBuilder = () => {
                 <CardContent className="space-y-4">
                   <div>
                     <Label htmlFor="careerGoals">What are your career aspirations?</Label>
-                    <Textarea id="careerGoals" placeholder="I want to work as a software engineer at a tech company, focusing on AI and machine learning..." rows={3} className="bg-gray-400" />
+                    <Textarea id="careerGoals" placeholder="I want to work as a software engineer at a tech company, focusing on AI and machine learning..." rows={3} className="bg-gray-400 text-black border-2 border-black" />
                   </div>
                   <div>
                     <Label htmlFor="interests">Industry Interests</Label>
-                    <Input id="interests" placeholder="Technology, Healthcare, Finance, etc." className="bg-gray-400" />
+                    <Input id="interests" placeholder="Technology, Healthcare, Finance, etc." className="bg-gray-400 text-black border-2 border-black" />
                   </div>
                 </CardContent>
               </Card>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center  pb-5">
                 <Button size="lg" className="gradient-bg px-8">
                   Save Profile & Continue
                 </Button>
