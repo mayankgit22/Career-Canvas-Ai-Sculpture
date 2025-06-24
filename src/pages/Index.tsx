@@ -10,7 +10,9 @@ import { AgentShowcase } from "@/components/AgentShowcase";
 import { FeatureCard } from "@/components/FeatureCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { Navigation } from "@/components/Navigation";
+import  {Hero} from "@/components/TextEffect";
 const Index = () => {
+  // const typeText=useTypewriter("Your AI Career",100);
   const [activeTab, setActiveTab] = useState("discovery");
   return <div className="min-h-screen bg-background md:overflow-x-hidden">
       <Navigation />
@@ -25,7 +27,7 @@ const Index = () => {
               🚀 AI-Powered Career Success Platform
             </Badge>
             <h1 className="text-5xl font-bold mb-6 leading-tight text-zinc-950 md:text-7xl">
-              Your AI Career <br />
+             <Hero  /> 
               <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Sculptor</span>
             </h1>
             <p className="text-xl mb-8 leading-relaxed text-indigo-500 md:text-2xl font-normal">
