@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,22 +11,45 @@ import { FeatureCard } from "@/components/FeatureCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { Navigation } from "@/components/Navigation";
 import  {Hero} from "@/components/TextEffect";
+import { supabase } from "../utils/supabase";
 const Index = () => {
   // const typeText=useTypewriter("Your AI Career",100);
   const [activeTab, setActiveTab] = useState("discovery");
-  return <div className="min-h-screen bg-background md:overflow-x-hidden">
+  const [skills, setSkills] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          const { data } = await supabase
+            .from('profiles')
+            .select('skills')
+            .eq('id', session.user.id)
+            .single();
+          if (data?.skills && Array.isArray(data.skills)) {
+            setSkills(data.skills);
+          }
+        }
+      } catch (e) {
+        // If not logged in or error, keep default empty (chart uses its own defaults)
+      }
+    };
+    fetchSkills();
+  }, []);
+  return <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
       {/* <img className="w-full h-full" src="https://imgs.search.brave.com/lcC_TfnW3N9UTFyW4O_g1-7Q5xxfFcMEoHVtJqi9Ix8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGljanVt/Ym8uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9taW5pbWFsaXN0/LWhlYWRlci1waG90/by13aXRoLXdvbWFu/LXdpdGgtY2xvc2Vk/LWV5ZXMtZnJlZS1p/bWFnZS5qcGVnP3c9/NjAwJnF1YWxpdHk9/ODA" alt="" /> */}
-      <section className="py-20 px-4 text-white relative overflow-x-hidden w-[100%]">
-        <div className="absolute inset-0 bg-slate-50 border-b-2 border-black px-0"></div>
+      <section className="py-20 px-4 text-white relative w-[100%]">
+        <div className="absolute inset-0 bg-secondary dark:bg-card border-b-2 border-border px-0"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto bg-transparent ">
             <Badge className="mb-6 text-white border-white/30 bg-black hover:text-white hover:bg-gray-600">
               🚀 AI-Powered Career Success Platform
             </Badge>
-            <h1 className="text-5xl font-bold mb-6 leading-tight text-zinc-950 md:text-7xl">
+            <h1 className="text-5xl font-bold mb-6 leading-tight text-foreground md:text-7xl">
              <Hero  /> 
               <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Sculptor</span>
             </h1>
@@ -41,9 +64,11 @@ const Index = () => {
                   <ChevronRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-white text-white px-8 py-4 bg-mainColor hover:bg-blue-800 hover:text-white text-lg">
-                Watch Demo
-              </Button>
+              <Link to="/demo">
+                <Button size="lg" variant="outline" className="border-white text-white px-8 py-4 bg-mainColor hover:bg-blue-800 hover:text-white text-lg">
+                  Watch Demo
+                </Button>
+              </Link>
             </div>
             <div className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto">
               <div className="text-center rounded-full border-2 p-2 bg-black border-mainColor">
@@ -64,10 +89,10 @@ const Index = () => {
       </section>
 
       {/* Skills Visualization Demo */}
-      <section className="py-20 px-4 bg-neutral-50 border-b-2 border-black ">
+      <section className="py-20 px-4 bg-secondary dark:bg-card border-b-2 border-border">
         <div className="container mx-auto">
           <div className="text-center mb-16 rounded">
-            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">See Your Skills in Action</h2>
+            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-foreground">See Your Skills in Action</h2>
             <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               Our AI analyzes your profile and matches it with perfect opportunities
             </p>
@@ -76,26 +101,22 @@ const Index = () => {
             <div className="w-[90%] h-[100%]">
               <Card className="p-3 md:pd-6 bg-mainColor text-sm md:text-md">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-black gap-2">
+                  <CardTitle className="flex items-center text-foreground gap-2">
                     <BarChart3 className="w-5 h-5 text-balck " />
                     Skill-Opportunity Match
                   </CardTitle>
                 </CardHeader>
-                  <RadarChart1 />
+                  <RadarChart1 skills={skills.length > 0 ? skills : undefined} />
                 <CardContent >
                   <div className="mt-6 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-zinc-50 font-semibold text-sm">ReactJS</span>
-                      <Badge className="bg-green-100 text-green-800">Strong Match</Badge>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-zinc-50 font-semibold text-sm">Nextjs</span>
-                      <Badge className="bg-yellow-100 text-yellow-800">Good Match</Badge>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="font-semibold text-zinc-50 text-sm">DSA</span>
-                      <Badge className="bg-green-100 text-green-800">Strong Match</Badge>
-                    </div>
+                    {(skills.length > 0 ? skills.slice(0, 3) : ["ReactJS", "Nextjs", "DSA"]).map((skill, index) => (
+                      <div key={index} className="flex items-center justify-between">
+                        <span className="text-zinc-50 font-semibold text-sm">{skill}</span>
+                        <Badge className={index % 2 === 0 ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}>
+                          {index % 2 === 0 ? "Strong Match" : "Good Match"}
+                        </Badge>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
@@ -107,7 +128,7 @@ const Index = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Smart Opportunity Matching</h3>
-                  <p className="text-base text-zinc-950">
+                  <p className="text-base text-foreground">
                     Our AI scans thousands of opportunities and ranks them based on your unique profile.
                   </p>
                 </div>
@@ -118,7 +139,7 @@ const Index = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Real-time Skill Analysis</h3>
-                  <p className="font-normal text-zinc-950">
+                  <p className="font-normal text-foreground">
                     See exactly how your skills align with job requirements and identify growth areas.
                   </p>
                 </div>
@@ -129,7 +150,7 @@ const Index = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Personalized Recommendations</h3>
-                  <p className="font-normal text-zinc-950">
+                  <p className="font-normal text-foreground">
                     Get actionable insights on how to improve your application for each opportunity.
                   </p>
                 </div>
@@ -140,10 +161,10 @@ const Index = () => {
       </section>
 
       {/* Features Tabs */}
-      <section id="features" className="py-20 px-4 bg-gray-50">
+      <section id="features" className="py-20 px-4 bg-secondary dark:bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">Everything You Need to Succeed</h2>
+            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-foreground">Everything You Need to Succeed</h2>
             <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               From opportunity discovery to application submission—all in one platform
             </p>
@@ -184,10 +205,10 @@ const Index = () => {
       </section>
 
       {/* AI Agents Section */}
-      <section id="agents" className="py-20 px-4 bg-gray-50">
+      <section id="agents" className="py-20 px-4 bg-secondary dark:bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">Meet Your AI Career Team</h2>
+            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-foreground">Meet Your AI Career Team</h2>
             <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               9 specialized agents working together to accelerate your career success
             </p>
@@ -197,10 +218,10 @@ const Index = () => {
       </section>
 
       {/* Success Stories */}
-      <section id="success" className="py-20 px-4 bg-black">
+      <section id="success" className="py-20 px-4 bg-slate-900 dark:bg-card">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="tmd:font-bold font-semibold mb-4 text-3xl md:text-4xl text-black">Student Success Stories</h2>
+            <h2 className="md:font-bold font-semibold mb-4 text-3xl md:text-4xl text-white">Student Success Stories</h2>
             <p className="text-lime-500 font-medium text-xl sm:text-2xl md:text-4xl">
               See how CareerCanvas has transformed careers across the globe
             </p>

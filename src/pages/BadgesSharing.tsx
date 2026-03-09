@@ -85,48 +85,48 @@ const BadgesSharing = () => {
     value: "3,200+",
     change: "+20%"
   }];
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container mx-auto px-4 py-8 bg-white w-[100%] ">
-        <div className="max-w-6xl mx-auto flex flex-col justify-center ">
-          <div className=" text-center mb-8 bg-blue-100 rounded-md p-4">
-            <h1 className=" text-3xl md:text-4xl font-bold mb-4 text-zinc-950">Badges & Sharing</h1>
-            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent md:font-semibold text-lime-500 font-medium text-xl sm:text-2xl md:text-3xl">
+      <div className="container mx-auto px-4 py-8 bg-background w-[100%]">
+        <div className="max-w-6xl mx-auto flex flex-col justify-center">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Badges & Sharing</h1>
+            <p className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-semibold text-xl sm:text-2xl">
               Celebrate your achievements and share your career journey
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-4">
             {/* Badges Section */}
-            <div className="lg:col-span-2 flex flex-col justify-center space-y-6 md:w-[100%]   text-sm md:text-lg">
-              <Card className="border-2 border-black bg-gradient-to-r from-blue-500 to-purple-600   md:w-[100%]">
-                <CardHeader className="">
+            <div className="lg:col-span-2 flex flex-col justify-center space-y-6 md:w-[100%] text-sm md:text-lg">
+              <Card className="bg-card border-2 border-border md:w-[100%]">
+                <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-black" />
-                    <h1 className=" text-black font-semibold">Your Badges</h1>
+                    <Trophy className="w-5 h-5 text-foreground" />
+                    <span className="text-foreground font-semibold">Your Badges</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {earnedBadges.map((badge, index) => {
                     const Icon = badge.icon;
-                    return <Card key={index} className="bg-slate-950">
-                          <CardContent className="p-4 border-black border-2 rounded-2xl bg-black">
+                    return <Card key={index} className="bg-muted border border-border">
+                          <CardContent className="p-4">
                             <div className="flex items-start gap-3">
                               <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${badge.color}`}>
                                 <Icon className="w-6 h-6 text-white" />
                               </div>
                               <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-1">
-                                  <h3 className="font-semibold text-zinc-50">{badge.name}</h3>
+                                  <h3 className="font-semibold text-foreground">{badge.name}</h3>
                                   {badge.earned && <Badge className="bg-green-100 text-green-800 text-xs">Earned</Badge>}
                                 </div>
-                                <p className="text-sm mb-2 text-zinc-50">{badge.description}</p>
-                                {badge.earned ? <p className="text-xs text-zinc-100">Earned on {badge.earnedDate}</p> : <div className="space-y-1">
+                                <p className="text-sm mb-2 text-muted-foreground">{badge.description}</p>
+                                {badge.earned ? <p className="text-xs text-muted-foreground">Earned on {badge.earnedDate}</p> : <div className="space-y-1">
                                     <div className="flex justify-between text-xs">
-                                      <span className="text-zinc-50">Progress</span>
-                                      <span>{badge.progress}%</span>
+                                      <span className="text-muted-foreground">Progress</span>
+                                      <span className="text-foreground">{badge.progress}%</span>
                                     </div>
                                     <Progress value={badge.progress} className="h-2" />
                                   </div>}
@@ -140,36 +140,35 @@ const BadgesSharing = () => {
               </Card>
 
               {/* Shareable Content */}
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black   md:w-[100%]">
-                <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-md ">
+              <Card className="bg-card border-2 border-border md:w-[100%]">
+                <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Share2 className="w-5 h-5 text-black" />
-                    <h1 className="text-black font-semibold">Share Your Success</h1>
+                    <Share2 className="w-5 h-5 text-foreground" />
+                    <span className="text-foreground font-semibold">Share Your Success</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {shareableContent.map((content, index) => <Card key={index} className="hover:shadow-lg transition-shadow bg-lime-300">
-                        <CardContent className="p-3 bg-lime-200 border-2 border-black rounded-xl ">
-                          <div className="flex gap-3 w-[100%] ">
-                            <div className=" rounded-sm flex items-center justify-center bg-amber-950 w-10 h-10 md:w-20 md:h=16">
-                              <FileText className="w-6 h-6 text-muted-foreground" />
+                    {shareableContent.map((content, index) => <Card key={index} className="hover:shadow-lg transition-shadow bg-muted border border-border">
+                        <CardContent className="p-3">
+                          <div className="flex gap-3 w-[100%]">
+                            <div className="rounded-lg flex items-center justify-center bg-blue-600/20 w-12 h-12 md:w-16 md:h-16">
+                              <FileText className="w-7 h-7 text-blue-500" />
                             </div>
-                            <div className="flex-1   md:w-[100%]">
+                            <div className="flex-1 md:w-[100%]">
                               <div className="flex items-center gap-2 mb-1">
-                                <h4 className="font-medium">{content.title}</h4>
+                                <h4 className="font-medium text-foreground">{content.title}</h4>
                                 <Badge variant="secondary" className="text-xs">{content.type}</Badge>
                               </div>
-                              <p className="text-sm mb-3 text-zinc-900">{content.description}</p>
+                              <p className="text-sm mb-3 text-muted-foreground">{content.description}</p>
                               <div className="flex gap-4">
-                                {content.platforms.map(platform => <Button key={platform} size="sm" variant="outline" className="bg-zinc-50 text-zinc-950 border-2 border-black font-light w-5 h-5">
-                                    <Share2 className="w-3 h-3 mr-1" />
+                                {content.platforms.map(platform => <Button key={platform} size="sm" variant="outline" className="text-foreground border-2 border-border bg-muted hover:bg-accent font-light px-3 py-1">
+                                    <Share2 className="w-4 h-4 mr-1" />
                                     <span className="hidden md:block">{platform}</span>
                                   </Button>)}
-                                <Button size="sm" variant="outline" className="bg-zinc-50 text-zinc-950 border-2 border-black w-5 h-5">
-                                  <Copy className="w-3 h-3 mr-1" />
-                                  <span className="hidden md:blocl">Copy Link</span>
-                                  {/* Copy Link */}
+                                <Button size="sm" variant="outline" className="text-foreground border-2 border-border bg-muted hover:bg-accent px-3 py-1">
+                                  <Copy className="w-4 h-4 mr-1" />
+                                  <span className="hidden md:block">Copy Link</span>
                                 </Button>
                               </div>
                             </div>
@@ -182,37 +181,37 @@ const BadgesSharing = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6  md:w-[100%]">
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black w-[100%]  md:w-[100%] ">
+            <div className="space-y-6 md:w-[100%]">
+              <Card className="bg-card border-2 border-border w-[100%] md:w-[100%]">
                 <CardHeader>
-                  <CardTitle className="text-black">Badge Progress</CardTitle>
+                  <CardTitle className="text-foreground">Badge Progress</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-white">3/6</div>
-                      <p className="text-sm text-zinc-950">Badges Earned</p>
+                      <div className="text-2xl font-bold text-foreground">3/6</div>
+                      <p className="text-sm text-muted-foreground">Badges Earned</p>
                     </div>
                     <Progress value={50} className="h-3" />
-                    <p className="text-sm text-center text-zinc-950">
+                    <p className="text-sm text-center text-muted-foreground">
                       50% complete - 3 more badges to unlock!
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black  md:w-[100%] ">
+              <Card className="bg-card border-2 border-border md:w-[100%]">
                 <CardHeader>
-                  <CardTitle className="text-black">Community Impact</CardTitle>
+                  <CardTitle className="text-foreground">Community Impact</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     {communityStats.map((stat, index) => <div key={index} className="flex items-center justify-between">
                         <div>
-                          <p className="text-sm text-zinc-950">{stat.label}</p>
-                          <p className="font-semibold text-white">{stat.value}</p>
+                          <p className="text-sm text-muted-foreground">{stat.label}</p>
+                          <p className="font-semibold text-foreground">{stat.value}</p>
                         </div>
-                        <div className="flex items-center gap-1 text-green-600">
+                        <div className="flex items-center gap-1 text-green-500">
                           <TrendingUp className="w-3 h-3" />
                           <span className="text-xs">{stat.change}</span>
                         </div>
@@ -221,21 +220,21 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black   md:w-[100%]">
+              <Card className="bg-card border-2 border-border md:w-[100%]">
                 <CardHeader>
-                  <CardTitle className="text-black">Success Stories</CardTitle>
+                  <CardTitle className="text-foreground">Success Stories</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <div className="p-3 rounded-lg bg-lime-200">
-                      <p className="text-sm font-medium">"CareerCanvas helped me land my dream internship at Google!"</p>
-                      <p className="text-xs mt-1 text-zinc-950">- Sarah M.</p>
+                    <div className="p-3 rounded-lg bg-muted">
+                      <p className="text-sm font-medium text-foreground">"CareerCanvas helped me land my dream internship at Google!"</p>
+                      <p className="text-xs mt-1 text-muted-foreground">- Sarah M.</p>
                     </div>
-                    <div className="p-3 rounded-lg bg-lime-200">
-                      <p className="text-sm font-medium">"The AI resume builder got me 3x more interviews!"</p>
-                      <p className="text-xs mt-1 text-zinc-950">- Alex K.</p>
+                    <div className="p-3 rounded-lg bg-muted">
+                      <p className="text-sm font-medium text-foreground">"The AI resume builder got me 3x more interviews!"</p>
+                      <p className="text-xs mt-1 text-muted-foreground">- Alex K.</p>
                     </div>
-                    <Button variant="outline" size="sm" className="w-full text-zinc-950 bg-zinc-50">
+                    <Button variant="outline" size="sm" className="w-full text-foreground border-2 border-border bg-muted hover:bg-accent">
                       <Users className="w-4 h-4 mr-2" />
                       View All Stories
                     </Button>
@@ -243,15 +242,15 @@ const BadgesSharing = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-black   md:w-[100%] ">
+              <Card className="bg-card border-2 border-border md:w-[100%]">
                 <CardHeader>
-                  <CardTitle className="text-black">Viral Challenge</CardTitle>
+                  <CardTitle className="text-foreground">Viral Challenge</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center space-y-3">
                     <div className="text-2xl">🚀</div>
-                    <h3 className="font-semibold text-white">#CareerCanvasChallenge</h3>
-                    <p className="text-sm text-zinc-950">
+                    <h3 className="font-semibold text-foreground">#CareerCanvasChallenge</h3>
+                    <p className="text-sm text-muted-foreground">
                       Share your before/after resume transformation and tag 3 friends!
                     </p>
                     <Button size="sm" className="gradient-bg w-full">

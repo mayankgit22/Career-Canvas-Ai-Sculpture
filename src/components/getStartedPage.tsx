@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,7 +25,9 @@ export default function GetStartedPage() {
               <option value="apply">Generate Application Materials</option>
             </select>
           </div>
-          <Button className="w-full rounded-xl text-lg py-2 mt-4 bg-white text-black">Start Building</Button>
+          <Link to="/profile">
+            <Button className="w-full rounded-xl text-lg py-2 mt-4 bg-white text-black border border-gray-200 hover:bg-gray-50">Start Building</Button>
+          </Link>
         </CardContent>
       </Card>
 

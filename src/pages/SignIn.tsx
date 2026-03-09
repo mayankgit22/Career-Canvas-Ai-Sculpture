@@ -1,106 +1,120 @@
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import {getAuth,onAuthStateChanged,signInWithEmailAndPassword }from "firebase/auth"
-interface SignInProps {
-  email: string;
-  password: string;
-}
+import { Link, useNavigate } from 'react-router-dom';
+import { supabase } from "../utils/supabase";
+import { Loader2 } from "lucide-react";
+
+import { useToast } from "@/hooks/use-toast";
 
 function SignIn() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const auth = getAuth();
-
+  const [loading, setLoading] = React.useState(false);
   
-  const handleSignIn = async() => {
-    
-    try{
+  const handleSignIn = async () => {
+    const cleanEmail = email.trim();
+    if (!cleanEmail || !password.trim()) {
+      toast({
+        title: "Missing Fields",
+        description: "Please enter both email and password.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    console.log("Attempting Supabase SignIn for:", cleanEmail);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: cleanEmail,
+        password: password,
+      });
+
+      if (error) throw error;
       
-       const response=signInWithEmailAndPassword(auth, email, password)
-       .then((userCredential) => {
-         const user = userCredential.user;
-         console.log(user);
-        //  setIsLoggedin(true);
-       })
-       .catch((error) => {
-             alert("Sign in failed. Please check your credentials.");
-console.log(error
-
-)
-       });
-    if(response){
-      alert("Sign in successful!");
-      navigate('/')
+      console.log("SignIn SUCCESS.", data.user?.id);
+      toast({
+        title: "Welcome Back!",
+        description: "Sign in successful.",
+      });
+      navigate('/');
+    } catch (error: any) {
+      console.error("SignIn Error:", error);
+      
+      const errorMsg = error.message || String(error);
+      if (errorMsg.includes('Invalid login credentials')) {
+        toast({
+          title: "Invalid Credentials",
+          description: "Account not found or incorrect password. If you don't have an account, please Sign Up.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Sign In Failed",
+          description: errorMsg || "Please check your credentials and try again.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setLoading(false);
+      console.log("SignIn Flow Finished.");
     }
-
-    }
-    catch(error){
-      console.log(error)
-    } 
   };
-  // const signInHandler = async ({ email, password }: SignInProps) => {
-  //   const auth = getAuth();
-  //   try {
-  //     const response = await signInWithEmailAndPassword(auth, email, password);
-  //     const user = response.user;
-  //     console.log(user);
-  //     setIsLoggedin(true);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  // });
 
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-gradient-to-r from-blue-500 to-purple-600 p-4">
-      <div className="flex flex-col gap-6 w-full max-w-md bg-white/20 p-6 rounded-lg shadow-lg">
-        <h1 className="text-2xl sm:text-3xl text-white font-bold text-center">Sign In</h1>
-
-        <div className="w-full">
-          <label htmlFor="email" className="text-white mb-1 block">Email</label>
-          <Input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="w-full bg-gray-600 border-2 border-black text-white font-normal"
-          />
+    <div className="min-h-screen w-full flex justify-center items-center bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 p-4">
+      <div className="flex flex-col gap-6 w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl shadow-2xl">
+        <div className="text-center">
+          <h1 className="text-3xl sm:text-4xl text-white font-bold tracking-tight">Welcome Back</h1>
+          <p className="text-blue-100 mt-2 text-sm">Sign in to your CareerCanvas account</p>
         </div>
 
-        <div className="w-full">
-          <label htmlFor="password" className="text-white mb-1 block">Password</label>
-          <Input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            className="w-full bg-gray-600 border-2 border-black text-white font-normal"
-          />
+        <div className="space-y-4 w-full mt-2">
+          <div className="space-y-1.5 w-full">
+            <label htmlFor="email" className="text-white/90 text-sm font-medium block">Email</label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="name@example.com"
+              className="w-full bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white focus:ring-1 focus:ring-white transition-all duration-200"
+            />
+          </div>
+
+          <div className="space-y-1.5 w-full">
+            <label htmlFor="password" className="text-white/90 text-sm font-medium block">Password</label>
+            <Input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="w-full bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white focus:ring-1 focus:ring-white transition-all duration-200"
+            />
+          </div>
         </div>
 
         <Button
           onClick={handleSignIn}
-          type="submit"
-          variant="destructive"
-          className="w-full bg-black text-white hover:bg-gray-800"
+          type="button"
+          disabled={loading}
+          className="w-full bg-white text-indigo-600 hover:bg-gray-100 hover:text-indigo-700 font-semibold shadow-lg h-11 mt-2 transition-all duration-200 flex items-center justify-center gap-2"
         >
-          Sign In
+          {loading && <Loader2 className="w-5 h-5 animate-spin" />}
+          {loading ? "Signing In..." : "Sign In"}
         </Button>
 
-        <div className="text-center text-white">
-          <p className="inline">Don't have an account? </p>
-          <Link to="/signup" className="text-black font-medium hover:underline">
-            Sign Up
-          </Link>
+        <div className="text-center mt-2">
+          <p className="text-blue-100 text-sm">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-white font-bold hover:text-yellow-300 hover:underline transition-colors">
+              Sign Up
+            </Link>
+          </p>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-base: '/career-canvas-ai-sculptor-97/',
+  base: '/career-canvas-ai-sculptor-97/',
 
 
   resolve: {
@@ -12,12 +12,8 @@ base: '/career-canvas-ai-sculptor-97/',
       '@': path.resolve(__dirname, './src'),
     },
   },
-    server: {
-    allowedHosts: [
-      'written-use-georgia-purchases.trycloudflare.com' // ✅ add this line
-      ,'beta-card-pod-corruption.trycloudflare.com'
-      ,'individually-settled-constitutional-flashing.trycloudflare.com'
-    ],
+  server: {
+    host: true,
   },
 
 });

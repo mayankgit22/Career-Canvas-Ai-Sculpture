@@ -18,53 +18,64 @@ import {
   User,
   FileText,
   Award,
+  Sun,
+  Moon,
 } from "lucide-react";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
-import { getAuth, onAuthStateChanged,signOut } from "firebase/auth";
+import { useTheme } from "next-themes";
+import { supabase } from "../utils/supabase";
 import { get } from "http";
 // import SignIn from "@/pages/SignIn";
 export const Navigation = () => {
-  const firebaseConfig = {
-    apiKey: "AIzaSyD9g8XByguwKX_2rChfKTbTc7EG5hoyo4k",
-    authDomain: "firstproject-10795.firebaseapp.com",
-    databaseURL: "https://firstproject-10795-default-rtdb.firebaseio.com",
-    projectId: "firstproject-10795",
-    storageBucket: "firstproject-10795.firebasestorage.app",
-    messagingSenderId: "117017175443",
-    appId: "1:117017175443:web:0a7f334c08a02659f0f466",
-  };
   const signInHandler = () => {
-    console.log("clicked");
     navigate("/login");
-    setIsLogin(true);
   };
-  const auth = getAuth();
-  const [isLoggedin, setIsLoggedin] = useState(null);
-  const [user, setUser] = useState(null);
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [userDisplayName, setUserDisplayName] = useState<string | null>(null);
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser.email);
+    // Initial session check
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        setIsLogin(true);
+        setUserDisplayName(session.user.user_metadata?.full_name || session.user.email);
+      }
+    };
+    
+    checkSession();
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        setIsLogin(true);
+        setUserDisplayName(session.user.user_metadata?.full_name || session.user.email);
+      } else {
+        setIsLogin(false);
+        setUserDisplayName(null);
+      }
     });
 
-    return () => unsubscribe(); // Cleanup
+    return () => subscription.unsubscribe(); // Cleanup
   }, []);
-  const logOut= async()=>{
-      await signOut(auth);
-    setIsLogin(false);
-   
-alert("log out successful")
-      navigate("/signin")
-    
 
-  }
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const logOut = async () => {
+    try {
+      await supabase.auth.signOut();
+      setIsLogin(false);
+      navigate("/");
+    } catch (error) {
+      console.error("Error signing out", error);
+    }
+  };
+  // const app = initializeApp(firebaseConfig);
+  // const db = getFirestore(app);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
   const navItems = [
     {
       path: "/",
@@ -93,7 +104,7 @@ alert("log out successful")
     },
   ];
   return (
-    <header className="border-b border-border/40 backdrop-blur-lg  sticky top-0 z-50 w-full py-4  bg-lightish/70">
+    <header className="border-b border-border/40 backdrop-blur-lg sticky top-0 z-50 w-full py-4 bg-background/70">
       <div className="flex items-center justify-between px-4">
         <Link to="/" className="flex items-center space-x-2">
           <div className="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
@@ -111,10 +122,10 @@ alert("log out successful")
               <Link
                 key={item.path}
                 to={item.path}
-                className="flex items-center text-black py-0 hover:text-gray-600 gap-1 flex mx-[10px] px-[10px] "
+                className="flex items-center text-foreground py-0 hover:text-muted-foreground gap-1 flex mx-[10px] px-[10px] "
               >
                 <Icon className="w-4 h-4 px-0 rounded-none mx-0" />
-                <span className="text-zinc-950 font-semibold text-base hover:text-gray-500 px-0">
+                <span className="text-foreground font-semibold text-base hover:text-muted-foreground px-0">
                   {item.label}
                 </span>
               </Link>
@@ -122,7 +133,18 @@ alert("log out successful")
           })}
         </nav>
  <div className="hidden md:flex items-center space-x-4">
-<Link to={'/getstarted'}>
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-lg border border-border hover:bg-accent transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {mounted && theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-yellow-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-slate-700 dark:text-slate-300" />
+            )}
+          </button>
+<Link to={'/profile'}>
           <Button size="sm" className="gradient-bg">
             Get Started
           </Button>
@@ -140,11 +162,11 @@ alert("log out successful")
       <SignedIn>
         <UserButton />
       </SignedIn> */}
-          {user ? (
+          {isLogin ? (
             <>
               <div className="gap-1 flex items-center">
                 <Button size="sm" className=" border-2 border-black text-white bg-black hover:bg-gray-800">
-                  {user}
+                  {userDisplayName || "User"}
                 </Button>
                 <Button className=" border-black text-white bg-black  hover:bg-gray-700 "  onClick={logOut}>Log out</Button>
               </div>
@@ -187,7 +209,7 @@ alert("log out successful")
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${
                     isActive
                       ? "bg-white/80 text-green-700"
-                      : "text-black hover:text-foreground "
+                      : "text-foreground hover:text-muted-foreground "
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -197,12 +219,24 @@ alert("log out successful")
               );
             })}
             <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-              <Button variant="outline" size="sm">
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-accent transition-colors"
+              >
+                {mounted && theme === 'dark' ? (
+                  <><Sun className="w-4 h-4 text-yellow-400" /><span>Light Mode</span></>
+                ) : (
+                  <><Moon className="w-4 h-4" /><span>Dark Mode</span></>
+                )}
+              </button>
+              <Button onClick={signInHandler} variant="outline" size="sm" className="text-black">
                 Sign In
               </Button>
-              <Button size="sm" className="gradient-bg">
-                Get Started
-              </Button>
+              <Link to="/profile">
+                <Button size="sm" className="gradient-bg w-full">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </nav>
         </div>
