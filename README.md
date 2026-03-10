@@ -64,6 +64,3 @@ Contributions are always welcome! Feel free to open an issue or submit a pull re
 ## 📄 License
 
 This project is licensed under the MIT License.
-
----
-*Built with ❤️ using [Lovable](https://lovable.dev/)*
